@@ -2,6 +2,11 @@
 
 ## How to use
 
+#### Enter in Iex Mode
+```bash
+$ iex -S mix
+```
+
 #### Create Player
 ```elixir
 player = ExMon.create_player("Akenathon", :chute, :soco, :cura)
