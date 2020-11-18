@@ -27,3 +27,8 @@ ExMon.make_move(:cura)
 ```elixir
 ExMon.Game.info()
 ```
+
+#### Run Tests
+```elixir
+mix test
+```
