@@ -20,6 +20,7 @@ ExMon.start_game(player)
 #### Make Move
 ```elixir
 ExMon.make_move(:chute)
+ExMon.make_move(:cura)
 ```
 
 #### Get Game Info
