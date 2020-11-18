@@ -29,6 +29,6 @@ ExMon.Game.info()
 ```
 
 #### Run Tests
-```elixir
-mix test
+```bash
+$ mix test
 ```
