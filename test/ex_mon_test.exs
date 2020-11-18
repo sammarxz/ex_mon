@@ -24,13 +24,44 @@ defmodule ExMonTest do
     test "When the game start, returns a message" do
       player = Player.build("Akenthon", :chute, :soco, :cura)
 
-      nessages = capture_io(fn -> 
+      messages = capture_io(fn -> 
         assert ExMon.start_game(player) == :ok
       end)
 
-      assert nessages  =~ "The game is started"
-      assert nessages  =~ "status: :started"
-      assert nessages  =~ "turn: :player"
+      assert messages  =~ "The game is started"
+      assert messages  =~ "status: :started"
+      assert messages  =~ "turn: :player"
+    end
+  end
+
+  describe "make_move/1" do
+    setup do
+      player = Player.build("Akenthon", :chute, :soco, :cura)
+
+      capture_io(fn -> 
+        ExMon.start_game(player)
+      end)
+
+      :ok
+    end
+
+    test "when the move is valid, do the move. Computer mokes a random move too" do
+      messages = capture_io(fn -> 
+         ExMon.make_move(:chute)
+      end)
+
+      assert messages =~ "The player attacked the computer"
+      assert messages =~ "It's computer turn"
+      assert messages =~ "It's player turn"
+      assert messages =~ "status: :continue"
+    end
+
+    test "when the move is invalid, print the error message" do
+      messages = capture_io(fn -> 
+         ExMon.make_move(:kamehameha)
+      end)
+
+      assert messages =~ "Invalid Move: kamehameha"
     end
   end
 end
